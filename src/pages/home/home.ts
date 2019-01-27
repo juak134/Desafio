@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Platform } from 'ionic-angular';
+import { ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { FirestoreProvider } from '../../providers/firestore/firestore';
 import {
 	GoogleMaps,
@@ -47,19 +48,45 @@ export class HomePage {
   				private googleMaps: GoogleMaps, 
 				private geolocation: Geolocation,
 				public  platform: Platform,
-				public firestore: FirestoreProvider) { 		
+				public firestore: FirestoreProvider,
+				public loadingCtrl: LoadingController, 
+                private alertCtrl: AlertController, 
+                public toastCtrl: ToastController) { 		
   		this.directionsServiceTmp = new google.maps.DirectionsService;
         this.directionsDisplayTmp = new google.maps.DirectionsRenderer;
         this.bounds = new google.maps.LatLngBounds();
-        this.platform.ready().then(() => {
-        	this.myposicion();
-     	});
+
 
         
   }
- ionViewCanEnter(){
- 		this.impri();
+/* ionViewCanEnter(){
+ 		
  }
+*/
+  ionViewDidLoad(){
+        this.platform.ready().then(() => {
+        	this.myposicion();
+     	});
+  }
+
+  ionViewDidEnter(){
+   //Cargando el observable
+     this.impri();
+     async function presentLoading() {
+	  const loadingController = document.querySelector('ion-loading-controller');
+	  await loadingController.componentOnReady();
+
+	  const loadingElement = await loadingController.create({
+	    message: 'Please wait...',
+	    spinner: 'crescent',
+	    duration: 2000
+	  });
+	  return await loadingElement.present();
+	}
+}
+
+
+
 
  impri(){
  		 	this.firestore.getFirestore().subscribe(tiendas=>{
@@ -171,7 +198,7 @@ export class HomePage {
 	    this.map = new google.maps.Map(mapContainer, mapOptions2);
 	    let miMarker = new google.maps.Marker({
               //para cargar una imagen especial
-              //icon : 'assets/imgs/tienda.png', 
+              icon : 'assets/imgs/actual.png', 
               map: this.map,
               animation: 'DROP',
               title: 'mi posición',
