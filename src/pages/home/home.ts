@@ -51,13 +51,18 @@ export class HomePage {
   		this.directionsServiceTmp = new google.maps.DirectionsService;
         this.directionsDisplayTmp = new google.maps.DirectionsRenderer;
         this.bounds = new google.maps.LatLngBounds();
-        
-  }
- ionViewDidEnter(){
- 		this.platform.ready().then(() => {
+        this.platform.ready().then(() => {
         	this.myposicion();
      	});
-	 	this.firestore.getFirestore().subscribe(tiendas=>{
+
+        
+  }
+ ionViewCanEnter(){
+ 		this.impri();
+ }
+
+ impri(){
+ 		 	this.firestore.getFirestore().subscribe(tiendas=>{
 		  this.ltiendas = tiendas;
 		  
 		  if(this.ltiendas.length==0) {
