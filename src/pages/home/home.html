@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Lista de Tiendas
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+ <ion-list >
+    <ion-item *ngFor="let item of mostrar" tappable >
+      {{ item.nombre }} {{ item.distanci }}
+    </ion-item>
+  </ion-list>
+
+<div id="map_canvas"></div>
+
+<button ion-button round  (click)="registrar()" >
+<ion-icon slot="start" name="add"></ion-icon>
+Registrar Tienda
+</button>
 </ion-content>
