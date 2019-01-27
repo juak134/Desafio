@@ -32,7 +32,7 @@
     <!-- FIN  del campo duena -->
 <!-- INICIO del campo telefono -->
     <ion-item>
-        <ion-icon name="person" item-start></ion-icon>
+        <ion-icon name="call" item-start></ion-icon>
         <ion-label floating color="primary" >Telefono</ion-label>
         <ion-input type="text" formControlName="telefono" class="form-controll"></ion-input>
     </ion-item>
@@ -45,36 +45,42 @@
       <ion-row >
         <ion-col>
           <ion-item class="term">
+              <ion-icon name="flower" item-start></ion-icon>
               <ion-label class="terms-checkbox-label">Verduras</ion-label>
               <ion-checkbox color="primary" formControlName="verduras" value="verduras"></ion-checkbox>
           </ion-item>
         </ion-col>
         <ion-col>
          <ion-item class="term">
+              <ion-icon name="nutrition" item-start></ion-icon>
               <ion-label class="terms-checkbox-label">Frutas</ion-label>
               <ion-checkbox color="primary" formControlName="frutas" value="frutas"></ion-checkbox>
           </ion-item>
         </ion-col>
         <ion-col>
          <ion-item class="term">
+              <ion-icon name="pizza" item-start></ion-icon>
               <ion-label class="terms-checkbox-label">Panaderia</ion-label>
               <ion-checkbox color="primary" formControlName="panaderia" value="panaderia"></ion-checkbox>
           </ion-item>
         </ion-col>
         <ion-col>
          <ion-item class="term">
+              <ion-icon name="wine" item-start></ion-icon>
               <ion-label class="terms-checkbox-label">Bebidas</ion-label>
               <ion-checkbox color="primary" formControlName="bebidas" value="bebidas"></ion-checkbox>
           </ion-item>
         </ion-col>
         <ion-col>
          <ion-item class="term">
+              <ion-icon name="ice-cream" item-start></ion-icon>
               <ion-label class="terms-checkbox-label">Dulces</ion-label>
               <ion-checkbox color="primary" formControlName="dulces" value="dulces"></ion-checkbox>
           </ion-item>
         </ion-col>
         <ion-col>
          <ion-item class="term">
+              <ion-icon name="beer" item-start></ion-icon>
               <ion-label class="terms-checkbox-label">Cerveza</ion-label>
               <ion-checkbox color="primary" formControlName="cerveza" value="cerveza"></ion-checkbox>
           </ion-item>
@@ -110,8 +116,7 @@
     </ion-item>
   </ion-list>
     <div id="map_canvas2"></div>
-    <h3 >Coloque el marcador en la Ubicacion de la tienda</h3>
     <div padding>
-        <button ion-button block type="submit" [disabled]="!datos.valid" (click)="registrar()">Registrar</button>
+        <button ion-button block type="submit" [disabled]="!datos.valid" (click)="registrar()"> Registrar</button>
     </div>
 </ion-content>
