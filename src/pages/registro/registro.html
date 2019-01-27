@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nueva Tienda</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<form [formGroup]="datos" class="form" >
+<!-- INICIO del campo nombres -->
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.nombre">
+        <div *ngFor="let errors of formErrors.nombre" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo nombres -->
+<!-- INICIO del campo duena -->
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Dueña</ion-label>
+        <ion-input type="text" formControlName="duena" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.duena">
+        <div *ngFor="let errors of formErrors.duena" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo duena -->
+<!-- INICIO del campo telefono -->
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Telefono</ion-label>
+        <ion-input type="text" formControlName="telefono" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.telefono">
+        <div *ngFor="let errors of formErrors.telefono" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+    <!-- FIN  del campo telefono -->
+      <ion-row >
+        <ion-col>
+          <ion-item class="term">
+              <ion-label class="terms-checkbox-label">Verduras</ion-label>
+              <ion-checkbox color="primary" formControlName="verduras" value="verduras"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         <ion-item class="term">
+              <ion-label class="terms-checkbox-label">Frutas</ion-label>
+              <ion-checkbox color="primary" formControlName="frutas" value="frutas"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         <ion-item class="term">
+              <ion-label class="terms-checkbox-label">Panaderia</ion-label>
+              <ion-checkbox color="primary" formControlName="panaderia" value="panaderia"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         <ion-item class="term">
+              <ion-label class="terms-checkbox-label">Bebidas</ion-label>
+              <ion-checkbox color="primary" formControlName="bebidas" value="bebidas"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         <ion-item class="term">
+              <ion-label class="terms-checkbox-label">Dulces</ion-label>
+              <ion-checkbox color="primary" formControlName="dulces" value="dulces"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+         <ion-item class="term">
+              <ion-label class="terms-checkbox-label">Cerveza</ion-label>
+              <ion-checkbox color="primary" formControlName="cerveza" value="cerveza"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+<!-- INICIO del campo direccion 
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating color="primary" >Direccion</ion-label>
+        <ion-input type="text" formControlName="direccion" class="form-controll"></ion-input>
+    </ion-item>
+    <div *ngIf="formErrors.direccion">
+        <div *ngFor="let errors of formErrors.direccion" >
+            <p class="alert">{{ errors }}<p>
+        </div>
+    </div>
+  FIN  del campo direccion -->
+
+    <ion-label floating color="primary" >Ubicacion</ion-label>
+</form>
+
+  <ion-label floating color="primary" >Ubicacion</ion-label>
+    <ion-toolbar color="primary">
+    <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place"></ion-searchbar>
+  </ion-toolbar>
+
+
+ <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+    <div id="map_canvas2"></div>
+    <h3 >Coloque el marcador en la Ubicacion de la tienda</h3>
+    <div padding>
+        <button ion-button block type="submit" [disabled]="!datos.valid" (click)="registrar()">Registrar</button>
+    </div>
+</ion-content>
