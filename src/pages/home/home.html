@@ -10,14 +10,22 @@
 
  <ion-list >
     <ion-item *ngFor="let item of mostrar" tappable >
-      {{ item.nombre }} {{ item.distanci }}
+      {{ item.nombre }} 
+      <ion-note aling="right"> 
+      Distancia {{ item.distanci }} Km
+      </ion-note>
     </ion-item>
   </ion-list>
 
 <div id="map_canvas"></div>
 
+<ion-row aling="center" valing="center">
+	<ion-col><img src="assets/imgs/actual.png"> Ubicación Actual </ion-col>
+	<ion-col> <img src="assets/imgs/tienda.png"> Tienda </ion-col>
+</ion-row>
+
 <button ion-button block  (click)="registrar()" >
 <ion-icon slot="start" name="add"></ion-icon>
-Registrar Tienda
+ Registrar Tienda
 </button>
 </ion-content>
